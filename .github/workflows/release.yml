@@ -1,7 +1,6 @@
 name: Publish package to the Maven Central Repository
-on:
-  push:
-    tags: [ "*" ]
+on: [push] # one-run-to-find-them-all
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -24,4 +23,4 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} -P release clean deploy
+        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} -P release clean deplo

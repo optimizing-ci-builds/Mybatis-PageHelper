@@ -1,7 +1,6 @@
 name: Maven verify
-on:
-  pull_request:
-    types: [ opened, reopened, edited ]
+on: [push] # one-run-to-find-them-all
+
 jobs:
   mvn_verify:
     runs-on: ubuntu-latest
@@ -13,4 +12,4 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
       - name: Run the Maven verify phase
-        run: mvn --batch-mode --update-snapshots -P dev verify
+        run: mvn --batch-mode --update-snapshots -P dev verif
